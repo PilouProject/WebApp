@@ -1,0 +1,14 @@
+.TestTech {
+  text-align: center;
+}
+
+.rectangle {
+  border-width: 1px;
+  border-color: black;
+  background-color: blue;
+}
+
+.div-shapes {
+  width: 100%;
+  height: 100%;
+}
