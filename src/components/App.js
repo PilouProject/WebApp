@@ -8,11 +8,20 @@ function dynamicSort(property) {
 }
 
 const PrintShape = ({obj}) => {
-  console.log(obj);
-  const obj_css = {width: obj.Width, height: obj.Height}
+  var obj_css;
+
+  if (obj.FormType == 'rectangle') {
+    obj_css = {'width': obj.Width, 'height': obj.Height, 'marginLeft': obj.PositionX, 'marginTop': obj.PositionY};
+  }
+  else if (obj.FormType == 'circle') {
+    obj_css = {'width': obj.Width / 2, 'height': obj.Width / 2, 'borderRadius': '50%', 'marginLeft': obj.PositionX, 'marginTop': obj.PositionY};
+  }
+  else {
+    obj_css = {'marginLeft': obj.PositionX, 'marginTop': obj.PositionY};
+  }
 
   return (
-    <span className={obj.FormType} style={obj_css}></span>
+    <div className={obj.FormType} style={obj_css}></div>
   );
 }
 
