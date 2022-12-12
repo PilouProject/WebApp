@@ -2,8 +2,7 @@
   text-align: center;
 }
 
-
-.rectangle .circle {
+.rectangle, .circle {
   position: absolute;
   background-color: transparent;
   border: solid black 1px;
@@ -16,5 +15,8 @@
 }
 
 .div-shapes {
+  width: 600px;
+  height: 800px;
   position: relative;
+  overflow: hidden;
 }

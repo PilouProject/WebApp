@@ -9,6 +9,7 @@ function dynamicSort(property) {
 
 const PrintShape = ({obj}) => {
   var obj_css;
+  var text = '';
 
   if (obj.FormType == 'rectangle') {
     obj_css = {'width': obj.Width, 'height': obj.Height, 'marginLeft': obj.PositionX, 'marginTop': obj.PositionY};
@@ -18,10 +19,15 @@ const PrintShape = ({obj}) => {
   }
   else {
     obj_css = {'marginLeft': obj.PositionX, 'marginTop': obj.PositionY};
+    text = obj.Text;
+  }
+
+  const popUpDisplayText = () => {
+    alert(obj.Text);
   }
 
   return (
-    <div className={obj.FormType} style={obj_css}></div>
+    <div onClick={popUpDisplayText} className={obj.FormType} style={obj_css}>{text}</div>
   );
 }
 
@@ -54,7 +60,7 @@ const GetJsonFileData = ({setJsonInput}) => {
         return false;
       });
 
-      jsonObj.sort(dynamicSort('Order')).sort(dynamicSort('Order'));
+      jsonObj.sort(dynamicSort('Order'));
 
       setJsonInput(jsonObj);    
     }
@@ -64,20 +70,19 @@ const GetJsonFileData = ({setJsonInput}) => {
 
   return (
     <div>
-      <input onChange={getFile} type="file"/>
+      <input onChange={getFile} type="file" accept='.json'/>
     </div>
   );
 }
 
 export function App({ initialData }) {
 const [jsonipunt, setJsonInput] = React.useState([]);
-//const [shapes, setShapes] = React.useState([]);
 
- useEffect(() => {
-  if (jsonipunt.length > 0) {
-    console.log(jsonipunt);
-  }
-}, [jsonipunt]);
+//  useEffect(() => {
+//   if (jsonipunt.length > 0) {
+//     console.log(jsonipunt);
+//   }
+// }, [jsonipunt]);
 
   return (
     <div className="TestTech">
